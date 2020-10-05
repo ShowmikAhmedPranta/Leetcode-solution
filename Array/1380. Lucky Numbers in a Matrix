@@ -1,0 +1,70 @@
+https://leetcode.com/problems/lucky-numbers-in-a-matrix/
+
+Problem:
+1380. Lucky Numbers in a Matrix
+Easy
+
+Given a m * n matrix of distinct numbers, return all lucky numbers in the matrix in any order.
+
+A lucky number is an element of the matrix such that it is the minimum element in its row and maximum in its column.
+
+ 
+
+Example 1:
+
+Input: matrix = [[3,7,8],[9,11,13],[15,16,17]]
+Output: [15]
+Explanation: 15 is the only lucky number since it is the minimum in its row and the maximum in its column
+
+Example 2:
+
+Input: matrix = [[1,10,4,2],[9,3,8,7],[15,16,17,12]]
+Output: [12]
+Explanation: 12 is the only lucky number since it is the minimum in its row and the maximum in its column.
+
+Example 3:
+
+Input: matrix = [[7,8],[1,2]]
+Output: [7]
+
+ 
+
+Constraints:
+
+    m == mat.length
+    n == mat[i].length
+    1 <= n, m <= 50
+    1 <= matrix[i][j] <= 10^5.
+    All elements in the matrix are distinct.
+
+Solution:
+*******************************************************************************************************************************
+class Solution:
+    def luckyNumbers (self, matrix: List[List[int]]) -> List[int]:
+        m=len(matrix)
+        if(m>50):
+            return 0
+        
+        row_min=[]
+        for i in matrix:
+            if(len(i)<1):
+                return 0
+            row_min.append(min(i))
+        rev=[]
+        for j in range(0,len(matrix[0])):
+            a=[]
+            for i in matrix:
+                a.append(i[j])
+            rev.append(a)
+    
+        col_max=[]
+        lucky=[]
+        for i in rev:
+            col_max.append(max(i))
+        for i in row_min:
+            for j in col_max:
+                if(i==j):
+                    lucky.append(i)
+        return lucky
+            
+    ********************************************************************************************************************************
