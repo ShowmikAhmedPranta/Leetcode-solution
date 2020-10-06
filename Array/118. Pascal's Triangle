@@ -1,0 +1,44 @@
+https://leetcode.com/problems/pascals-triangle/
+
+*********************** loops can create confusion if not careful enough************************
+Problem:
+
+118. Pascal's Triangle
+Easy
+
+Given a non-negative integer numRows, generate the first numRows of Pascal's triangle.
+
+
+In Pascal's triangle, each number is the sum of the two numbers directly above it.
+
+Example:
+
+Input: 5
+Output:
+[
+     [1],
+    [1,1],
+   [1,2,1],
+  [1,3,3,1],
+ [1,4,6,4,1]
+]
+
+
+Solution:
+********************************************************************************************************************
+class Solution:
+    def generate(self, numRows: int) -> List[List[int]]:
+        output=[]
+        for i in range(numRows):
+            inter=[]
+            for j in range(i+1):
+                inter.append(1)
+            output.append(inter)
+
+        for i in range(numRows):
+            for j in range(i+1):
+                if(j==0 or j==i):
+                    output[i][j]=1
+                else:
+                    output[i][j]=output[i-1][j-1]+output[i-1][j]
+        return output
