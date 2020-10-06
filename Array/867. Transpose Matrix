@@ -1,0 +1,47 @@
+https://leetcode.com/problems/transpose-matrix/
+
+Problem:
+Given a matrix A, return the transpose of A.
+
+The transpose of a matrix is the matrix flipped over it's main diagonal, switching the row and column indices of the matrix.
+
+ *****image missing ***************
+
+Example 1:
+
+Input: [[1,2,3],[4,5,6],[7,8,9]]
+Output: [[1,4,7],[2,5,8],[3,6,9]]
+
+Example 2:
+
+Input: [[1,2,3],[4,5,6]]
+Output: [[1,4],[2,5],[3,6]]
+
+ 
+
+Note:
+
+    1 <= A.length <= 1000
+    1 <= A[0].length <= 1000
+
+Solution:
+*****************************************************************************************************************
+
+lass Solution:
+    def transpose(self, A: List[List[int]]) -> List[List[int]]:
+        output=[]
+        for i in range(0,len(A[0])):
+            t=[]
+            for j in range(0,len(A)):
+                t.append(A[j][i])
+            output.append(t)
+        return output
+********************************************************************************************************************
+Submission Detail
+36 / 36 test cases passed.
+	Status: Accepted
+Runtime: 72 ms
+Memory Usage: 14.3 MB
+
+You are here!
+Your runtime beats 80.97 % of python3 submissions.
