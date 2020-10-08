@@ -1,0 +1,88 @@
+https://leetcode.com/problems/consecutive-characters/
+
+Problem:
+
+1446. Consecutive Characters
+Easy
+
+Given a string s, the power of the string is the maximum length of a non-empty substring that contains only one unique character.
+
+Return the power of the string.
+
+ 
+
+Example 1:
+
+Input: s = "leetcode"
+Output: 2
+Explanation: The substring "ee" is of length 2 with the character 'e' only.
+
+Example 2:
+
+Input: s = "abbcccddddeeeeedcba"
+Output: 5
+Explanation: The substring "eeeee" is of length 5 with the character 'e' only.
+
+Example 3:
+
+Input: s = "triplepillooooow"
+Output: 5
+
+Example 4:
+
+Input: s = "hooraaaaaaaaaaay"
+Output: 11
+
+Example 5:
+
+Input: s = "tourist"
+Output: 1
+
+ 
+
+Constraints:
+
+    1 <= s.length <= 500
+    s contains only lowercase English letters.
+
+
+
+
+Solution:
+***********************************************************************************************************************
+class Solution:
+    def maxPower(self, s: str) -> int:
+        #s="aaaa"
+        output=0
+        c=1
+        ar=[x for x in s]
+        print(ar)
+        l=len(ar)
+        if(l==0):
+            output=0
+        elif(l==1):
+            output=1
+        elif(l==2):
+            if(ar[0]==ar[1]):
+                output=2
+            else:
+                output=1
+        else:
+            for i in range(0,l-1):
+                if(ar[i]==ar[i+1]):
+                    c=c+1
+                    if(c>output):
+                        output=c
+                    #print(c)
+                else:
+                    c=1
+                    if(c>output):
+                        output=c
+        return output
+
+
+
+
+
+
+
