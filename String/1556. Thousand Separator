@@ -1,0 +1,64 @@
+https://leetcode.com/problems/thousand-separator/
+
+Problem:
+
+1556. Thousand Separator
+Easy
+
+Given an integer n, add a dot (".") as the thousands separator and return it in string format.
+
+ 
+
+Example 1:
+
+Input: n = 987
+Output: "987"
+
+Example 2:
+
+Input: n = 1234
+Output: "1.234"
+
+Example 3:
+
+Input: n = 123456789
+Output: "123.456.789"
+
+Example 4:
+
+Input: n = 0
+Output: "0"
+
+ 
+
+Constraints:
+
+    0 <= n < 2^31
+
+
+
+Solution:
+***************************************************************************************************************************
+class Solution:
+    def thousandSeparator(self, n: int) -> str:
+        n1=str(n)
+        len_n=len(n1)
+        rem=len_n%3
+        n2=n1[::-1]
+        #print(n2)
+        output=""
+        count=0
+        for i in n2:
+            output=output+i
+            count=count+1
+            if(count==3):
+                output=output+"."
+                count=0
+        #print(output)
+        rev_o=output[::-1]
+        rev1=rev_o.strip('.')
+        return rev1
+
+
+
+
