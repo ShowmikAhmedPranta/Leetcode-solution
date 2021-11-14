@@ -106,3 +106,11 @@ class MyCircularQueue:
 # param_4 = obj.Rear()
 # param_5 = obj.isEmpty()
 # param_6 = obj.isFull()
+
+
+"""Result:
+Success
+Details 
+Runtime: 64 ms, faster than 92.83% of Python3 online submissions for Design Circular Queue.
+Memory Usage: 14.9 MB, less than 34.68% of Python3 online submissions for Design Circular Queue.
+"""
