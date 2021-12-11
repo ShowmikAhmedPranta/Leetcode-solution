@@ -1,0 +1,96 @@
+https://leetcode.com/problems/valid-parentheses/
+
+20. Valid Parentheses
+
+Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+An input string is valid if:
+
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+ 
+
+Example 1:
+
+Input: s = "()"
+Output: true
+Example 2:
+
+Input: s = "()[]{}"
+Output: true
+Example 3:
+
+Input: s = "(]"
+Output: false
+Example 4:
+
+Input: s = "([)]"
+Output: false
+Example 5:
+
+Input: s = "{[]}"
+Output: true
+ 
+
+Constraints:
+
+1 <= s.length <= 104
+s consists of parentheses only '()[]{}'.
+
+---------------------------------------------------------------------------------------------------------------
+#Making a stack
+
+class STack:
+    def __init__(self):
+        self._DAta = []
+        
+    def PUSH(self,e):
+        self._DAta.append(e)
+        
+    def POP(self):
+        if(len(self._DAta)==0):
+            raise Exception('Stack is empty')
+        else:
+            return self._DAta.pop()
+            
+    def TOP(self):
+        if(len(self._DAta)==0):
+            raise Exception('Stack is empty')
+        else:
+            return self._DAta[-1]
+        
+    def LENGTH(self):
+        return len(self._DAta)
+    
+    def IS_EMPTY(self):
+        if(self.LENGTH()==0):
+            return True
+        else:
+            return False
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+        A=s
+        a = STack()
+        left_parentheses = '[{('
+        right_parentheses = ']})'
+
+        for i in A:
+            if i in left_parentheses:
+                a.PUSH(i)
+            if i in right_parentheses:
+                if(a.IS_EMPTY()):
+                    return False
+                else:
+                    if(right_parentheses.index(i) != left_parentheses.index(a.POP())):
+                        return False
+        if(a.IS_EMPTY()):
+            return True
+        else:
+            return False
+        
+  -------------------------------------------------------------------------------------------------------------------------------
+  Success
+Details 
+Runtime: 32 ms, faster than 68.78% of Python3 online submissions for Valid Parentheses.
+Memory Usage: 14.2 MB, less than 65.39% of Python3 online submissions for Valid Parentheses.
