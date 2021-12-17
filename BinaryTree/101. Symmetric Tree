@@ -1,0 +1,53 @@
+https://leetcode.com/problems/symmetric-tree/
+
+Given the root of a binary tree, check whether it is a mirror of itself (i.e., symmetric around its center).
+
+ 
+
+Example 1:
+
+
+Input: root = [1,2,2,3,4,4,3]
+Output: true
+Example 2:
+
+
+Input: root = [1,2,2,null,3,null,3]
+Output: false
+ 
+
+Constraints:
+
+The number of nodes in the tree is in the range [1, 1000].
+-100 <= Node.val <= 100
+
+---------------------------------------------------------------------------------------------------------------------------
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def isSymmetric(self, root: Optional[TreeNode]) -> bool:
+        if(root.left==None and root.right==None):
+            return True
+        elif(root.left == None or root.right==None):
+            return False
+        else:
+            return self.isMirror(root.left, root.right)
+        
+    def isMirror(self, r1, r2):
+        if(r1==None and r2==None):
+            return True
+        elif(r1==None or r2==None):
+            return False
+        else:
+            return (r1.val==r2.val) and self.isMirror(r1.left, r2.right) and self.isMirror(r1.right, r2.left)
+            
+-----------------------------------------------------------------------------------------------------------------------------------
+Success
+Details 
+Runtime: 57 ms, faster than 8.50% of Python3 online submissions for Symmetric Tree.
+Memory Usage: 14.4 MB, less than 17.61% of Python3 online submissions for Symmetric Tree.
+---------------------------------------------------------------------------------------------------------------------------------------
