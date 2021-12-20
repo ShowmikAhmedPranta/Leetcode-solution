@@ -1,0 +1,60 @@
+https://leetcode.com/problems/valid-palindrome/
+
+A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
+
+Given a string s, return true if it is a palindrome, or false otherwise.
+
+ 
+
+Example 1:
+
+Input: s = "A man, a plan, a canal: Panama"
+Output: true
+Explanation: "amanaplanacanalpanama" is a palindrome.
+Example 2:
+
+Input: s = "race a car"
+Output: false
+Explanation: "raceacar" is not a palindrome.
+Example 3:
+
+Input: s = " "
+Output: true
+Explanation: s is an empty string "" after removing non-alphanumeric characters.
+Since an empty string reads the same forward and backward, it is a palindrome.
+ 
+
+Constraints:
+
+1 <= s.length <= 2 * 105
+s consists only of printable ASCII characters.
+--------------------------------------------------------------------------------------------------------------------------------------
+class Solution:
+    def conver(self,s):
+        a=[]
+        for i in s:
+            if(i.isalpha() or i in ['0','1','2','3','4','5','6','7','8','9']):
+                a.append(i.lower())
+        return a
+    def isP(self, s, low, high):
+        if(low>high):
+            return True
+        else:
+            if(s[low] != s[high]):
+                return False
+            else:
+                return self.isP(s,low+1, high-1)
+        
+        
+                
+    def isPalindrome(self, s: str) -> bool:
+        a=self.conver(s)
+        low=0
+        high=len(a)
+        return self.isP(a, low,high-1)
+        
+  --------------------------------------------------------------------------------------------------------------------------------------------
+  Success
+Details 
+Runtime: 56 ms, faster than 33.88% of Python3 online submissions for Valid Palindrome.
+Memory Usage: 55.6 MB, less than 5.86% of Python3 online submissions for Valid Palindrome.
