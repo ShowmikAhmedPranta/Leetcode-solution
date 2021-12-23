@@ -1,0 +1,49 @@
+https://leetcode.com/problems/duplicate-emails/
+
+SQL Schema
+Table: Person
+
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| id          | int     |
+| email       | varchar |
++-------------+---------+
+id is the primary key column for this table.
+Each row of this table contains an email. The emails will not contain uppercase letters.
+ 
+
+Write an SQL query to report all the duplicate emails.
+
+Return the result table in any order.
+
+The query result format is in the following example.
+
+ 
+
+Example 1:
+
+Input: 
+Person table:
++----+---------+
+| id | email   |
++----+---------+
+| 1  | a@b.com |
+| 2  | c@d.com |
+| 3  | a@b.com |
++----+---------+
+Output: 
++---------+
+| Email   |
++---------+
+| a@b.com |
++---------+
+Explanation: a@b.com is repeated two times.
+-----------------------------------------------------------------------------------------------------------------
+# Write your MySQL query statement below
+select distinct(P1.email) as Email from Person as P1, Person as P2 where P1.email=P2.email and P1.id != P2.id;
+--------------------------------------------------------------------------------------------------------------------
+Success
+Details 
+Runtime: 347 ms, faster than 47.10% of MySQL online submissions for Duplicate Emails.
+Memory Usage: 0B, less than 100.00% of MySQL online submissions for Duplicate Emails.
