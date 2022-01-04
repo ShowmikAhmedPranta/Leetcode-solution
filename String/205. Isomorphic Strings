@@ -1,0 +1,52 @@
+https://leetcode.com/problems/isomorphic-strings/
+
+Given two strings s and t, determine if they are isomorphic.
+
+Two strings s and t are isomorphic if the characters in s can be replaced to get t.
+
+All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character, but a character may map to itself.
+
+ 
+
+Example 1:
+
+Input: s = "egg", t = "add"
+Output: true
+Example 2:
+
+Input: s = "foo", t = "bar"
+Output: false
+Example 3:
+
+Input: s = "paper", t = "title"
+Output: true
+ 
+
+Constraints:
+
+1 <= s.length <= 5 * 104
+t.length == s.length
+s and t consist of any valid ascii character.
+---------------------------------------------------------------------------------------------------------------------------------
+class Solution:
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        if(len(s) != len(t)):
+            return False
+        else:
+            l=len(s)
+            a={}
+            for i in range(l):
+                x=s[i]
+                y=t[i]
+                if(x not in a.keys() and y not in a.values()):
+                    a[x]=y
+                if(x in a.keys() and a[x] != y):
+                    return False
+                if(x not in a.keys() and y in a.values()):
+                    return False
+            return True
+ ----------------------------------------------------------------------------------------------------------------------------
+ Success
+Details 
+Runtime: 84 ms, faster than 8.12% of Python3 online submissions for Isomorphic Strings.
+Memory Usage: 14.5 MB, less than 45.61% of Python3 online submissions for Isomorphic Strings.
